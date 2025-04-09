@@ -39,12 +39,7 @@ unsigned int readADC(char sensorSelect)
     // Only bits 1 & 0
     ADCMCTL0 |= sensorSelect & (BIT0 | Bit1);
 
-    while(ADCIV0 != ADCIFG0){ /* do nothing */  }
+    while(ADCIV0 != ADCIFG0){ /* do nothing and wait*/  }
 
-}
-
-#pragma vector = ADC_DONE
-__interrupt void ADC_Done(void)
-{
-    //put something here
+    return // ADC Register 
 }
