@@ -6,7 +6,7 @@ void CallForHeat();
 
 int CallForHeat_init(void)
 {
-    P3DIR &= ~BIT1; // P3.0 button is input
+    P3DIR &= ~BIT1; // P3.0 as Input
     P3REN |= BIT0; // Enable Resistor
     P3OUT |= BIT0; // Pull-up
     P3IES |= BIT0; // H to L
@@ -16,7 +16,7 @@ int CallForHeat_init(void)
     P3IFG &= ~BIT0; 
 }
 
-// Interrupt when Logical "HIGH" (1) is detected
+// Interrupt when rising edge is detected
 
 #pragma vector = PORT3_VECTOR
 __interrupt void ISR_Port3(void)
