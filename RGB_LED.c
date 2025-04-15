@@ -1,6 +1,5 @@
 #include "msp430fr2355.h"
 #include <msp430.h>
-#include <type_traits>
 
 void RGB_init()
 {
