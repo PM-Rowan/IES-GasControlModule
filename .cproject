@@ -91,7 +91,7 @@
                         </toolChain>
                     </folderInfo>
                     <sourceEntries>
-                        <entry excluding="Sensors.h|Sensors.c|CallForHeat-Interrupt.c|main.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+                        <entry excluding="RGB_LED.h|RGB_LED.c|Sensors.h|Sensors.c|CallForHeat-Interrupt.c|main.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
                     </sourceEntries>
                 </configuration>
             </storageModule>
