@@ -5,7 +5,7 @@ void timerDone();
 
 void pilotLightTimer_init() // 128 Second Timer
 {
-    TB0CCR0 = 0xFFFF - 1; // 16bMAX
+    TB0CCR0 = 0xFFFF; // 16bMAX
     TB0CCTL0 = CCIE;
 
     TB0CTL |= ID__8; // divide by 8
