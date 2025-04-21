@@ -10,7 +10,7 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
-"./RGB_LED.obj" \
+"./pilotLightTimer.obj" \
 "./test.obj" \
 "../lnk_msp430fr2355.cmd" \
 $(GEN_CMDS__FLAG) \
@@ -143,8 +143,8 @@ msp430fr2355_gc_simple_json.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "RGB_LED.obj" "test.obj" 
-	-$(RM) "RGB_LED.d" "test.d" 
+	-$(RM) "pilotLightTimer.obj" "test.obj" 
+	-$(RM) "pilotLightTimer.d" "test.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

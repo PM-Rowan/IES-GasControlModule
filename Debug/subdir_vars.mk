@@ -9,27 +9,27 @@ CMD_SRCS += \
 ../lnk_msp430fr2355.cmd 
 
 C_SRCS += \
-../RGB_LED.c \
+../pilotLightTimer.c \
 ../test.c 
 
 C_DEPS += \
-./RGB_LED.d \
+./pilotLightTimer.d \
 ./test.d 
 
 OBJS += \
-./RGB_LED.obj \
+./pilotLightTimer.obj \
 ./test.obj 
 
 OBJS__QUOTED += \
-"RGB_LED.obj" \
+"pilotLightTimer.obj" \
 "test.obj" 
 
 C_DEPS__QUOTED += \
-"RGB_LED.d" \
+"pilotLightTimer.d" \
 "test.d" 
 
 C_SRCS__QUOTED += \
-"../RGB_LED.c" \
+"../pilotLightTimer.c" \
 "../test.c" 
 
 
