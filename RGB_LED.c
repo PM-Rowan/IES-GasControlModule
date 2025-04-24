@@ -28,8 +28,8 @@ void RGB_init()
 // char is an 8b/1B that can have values of (0-255)
 void RGB_PWM(char R, char G, char B)
 {
-    TB3CCR1 = R << 2; // R * 4: (0,255) -> (0,1020)
+    TB3CCR3 = R << 2; // R * 4: (0,255) -> (0,1020)
     TB3CCR2 = G << 2; // G * 4: (0,255) -> (0,1020)
-    TB3CCR3 = B << 2; // B * 4: (0,255) -> (0,1020)
+    TB3CCR1 = B << 2; // B * 4: (0,255) -> (0,1020)
     return;
 }
