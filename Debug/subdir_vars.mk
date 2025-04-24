@@ -5,9 +5,6 @@
 SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
-CMD_SRCS += \
-../lnk_msp430fr2355.cmd 
-
 C_SRCS += \
 ../RGB_LED.c \
 ../test.c 
