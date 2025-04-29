@@ -12,8 +12,6 @@ void main(void)
 {
     systemSetup();
 
-
-    
 }
 
 void systemSetup()
@@ -21,4 +19,7 @@ void systemSetup()
     WDTCTL = WDTPW | WDTHOLD;   // stop watchdog timer
     
     CallForHeat_init(); // Setup Call For Heat Signal
+
+    // RUN VERY LAST!!!
+    __enable_interrupt();
 }

@@ -4,7 +4,7 @@
 
 void CallForHeat();
 
-int CallForHeat_init(void)
+void CallForHeat_init(void)
 {
     P3DIR &= ~BIT1; // P3.0 button is input
     P3REN |= BIT0; // Enable Resistor
@@ -12,7 +12,6 @@ int CallForHeat_init(void)
     P3IES |= BIT0; // H to L
 
     P3IE |= BIT0; // enables IRQ 
-    __enable_interrupt(); 
     P3IFG &= ~BIT0; 
 }
 
@@ -32,5 +31,6 @@ void CallForHeat()
     else {
         // IDLE STATE
     }
-    return;
+    
+    P3IFG &= ~BIT0; // Turn off flag
 }

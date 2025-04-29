@@ -1,5 +1,6 @@
 "./RGB_LED.obj"
 "./test.obj"
+"./Failsafe-Systems/flameRetry.obj"
 "./Sensors/potentiometer.obj"
 "./Sensors/thermistor.obj"
 "./Sensors/thermocouple.obj"

@@ -1,34 +1,25 @@
 #include <msp430.h>
 #include "msp430fr2355.h"
 
-#define SERVO_PIN     BIT4      // P1.4
+#define SERVO_PIN     BIT0      // P5.0
 #define BUTTON_PIN    BIT3      // P2.3
 #define DEBOUNCE_TIME 20000
 
-volatile char valveOpen = 0;
+volatile unsigned char valveOpen = 0; // used as 8bit unsigned int
 
 // Set servo angle in degrees (0–90)
 void setServoAngle(char newAngle) {
     //[0,255] = [0,90]   * n 
-    valveOpen = newAngle * 2.8333
+    valveOpen = newAngle * 2.8333;
 
-    // Map angle to pulse width (1ms–2ms = 5%–10% of 20ms period)
-    int pulse = 1000 + (valveOpen * 1000) / 90; // in µs
-
-    TACCR1 = (pulse * 1000) / 20000; // Scale to timer ticks for 1MHz
-}
-
-// Simple delay for debouncing
-void debounce() {
-    __delay_cycles(DEBOUNCE_TIME);
+    TBCCR1 = ((1000 + (valveOpen * 1000) / 90) * 1000) / DEBOUNCE_TIME; // Scale to timer ticks for 1MHz
 }
 
 // Button ISR (manual override)
 #pragma vector=PORT2_VECTOR
 __interrupt void Port_2(void) {
-    debounce();
 
-    valveOpen ^= 1; // Toggle valve state
+    valveOpen ^= 0x01; // Toggle valve state
     if (valveOpen) {
         setServoAngle(90); // Open valve
     } else {
@@ -39,13 +30,15 @@ __interrupt void Port_2(void) {
 }
 
 void setupPWM() {
-    P1DIR |= SERVO_PIN;  // Set P1.4 as 
-    P1SEL |= SERVO_PIN;  // Enable PWM on P1.4
+    P5DIR |= SERVO_PIN;  // Set P5.0 as output
+    P5SEL0 |= SERVO_PIN;  // Enable PWM on P5.0
 
-    TA0CCR0 = 20000 - 1;     // 20ms period @ 1MHz (50Hz)
-    TA0CCTL1 = OUTMOD_7;     // Reset/set mode
-    TA0CCR1 = 1500;          // Initial pulse width (~1.5ms = center)
-    TA0CTL = TASSEL_2 + MC_1;// SMCLK, up mode
+
+    // Config TB2.1
+    TB2CCR0 = 20000 - 1;     // 20ms period @ 1MHz (50Hz)
+    TB2CCTL1 = OUTMOD_3;     // Reset/set mode
+    TB2CCR1 = 1500;          // Initial pulse width (~1.5ms = center)
+    TB2CTL = TBSSEL_2 + MC_1;// SMCLK, up mode
 }
 
 void setupButton() {
@@ -57,22 +50,7 @@ void setupButton() {
     P2IFG &= ~BUTTON_PIN;    // Clear flag
 }
 
-void setup() {
-    WDTCTL = WDTPW | WDTHOLD;  // Stop watchdog
-    BCSCTL1 = CALBC1_1MHZ;     // Clock config
-    DCOCTL = CALDCO_1MHZ;
-
+void mainGasValve_init() {
     setupPWM();
     setupButton();
-
-    __enable_interrupt();      // Enable global interrupts
-}
-
-void main(void) {
-    setup();
-
-    while (1) {
-        // Main loop could monitor other logic, like auto shutoff, sensors, etc.
-        __no_operation(); // Idle
-    }
 }
