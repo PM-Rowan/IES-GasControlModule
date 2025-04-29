@@ -14,7 +14,7 @@ This will apply for:
 void adc_Init() 
 {
     // P1.(1, 3, 4, 5) -> A(1, 3, 4, 5)
-    P1DIR |= BIT1 | BIT3 | BIT4 | BIT5;
+    P1DIR &= ~(BIT1 | BIT3 | BIT4 | BIT5);
 
     P1SEL0 |= BIT1 | BIT3 | BIT4 | BIT5;
     P1SEL1 |= BIT1 | BIT3 | BIT4 | BIT5;
@@ -47,7 +47,7 @@ unsigned int readADC(char sensorSelect)
 
     while( (ADCIV0 & ADCIFG0) == 0);
 
-    return 
+    return // @ ADC Register
 }
 
 void quickRead() // Read all possible ADC Inputs, A0 -> A15

@@ -5,31 +5,28 @@
 SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
-CMD_SRCS += \
-../lnk_msp430fr2355.cmd 
-
 C_SRCS += \
-../RGB_LED.c \
-../test.c 
+../Valves/mainGasValve.c \
+../Valves/pilotGasValve.c 
 
 C_DEPS += \
-./RGB_LED.d \
-./test.d 
+./Valves/mainGasValve.d \
+./Valves/pilotGasValve.d 
 
 OBJS += \
-./RGB_LED.obj \
-./test.obj 
+./Valves/mainGasValve.obj \
+./Valves/pilotGasValve.obj 
 
 OBJS__QUOTED += \
-"RGB_LED.obj" \
-"test.obj" 
+"Valves\mainGasValve.obj" \
+"Valves\pilotGasValve.obj" 
 
 C_DEPS__QUOTED += \
-"RGB_LED.d" \
-"test.d" 
+"Valves\mainGasValve.d" \
+"Valves\pilotGasValve.d" 
 
 C_SRCS__QUOTED += \
-"../RGB_LED.c" \
-"../test.c" 
+"../Valves/mainGasValve.c" \
+"../Valves/pilotGasValve.c" 
 
 

@@ -1,18 +1,19 @@
 #include <msp430.h>
+#include "msp430fr2355.h"
 
-#define SERVO_PIN     BIT4      // P1.4 (Timer_A output)
+#define SERVO_PIN     BIT4      // P1.4
 #define BUTTON_PIN    BIT3      // P2.3
 #define DEBOUNCE_TIME 20000
 
-volatile int valveOpen = 0;
+volatile char valveOpen = 0;
 
-// Set servo angle in degrees (0–180)
-void setServoAngle(int angle) {
-    if (angle < 0) angle = 0;
-    if (angle > 180) angle = 180;
+// Set servo angle in degrees (0–90)
+void setServoAngle(char newAngle) {
+    //[0,255] = [0,90]   * n 
+    valveOpen = newAngle * 2.8333
 
     // Map angle to pulse width (1ms–2ms = 5%–10% of 20ms period)
-    int pulse = 1000 + (angle * 1000) / 180; // in µs
+    int pulse = 1000 + (valveOpen * 1000) / 90; // in µs
 
     TACCR1 = (pulse * 1000) / 20000; // Scale to timer ticks for 1MHz
 }
@@ -38,7 +39,7 @@ __interrupt void Port_2(void) {
 }
 
 void setupPWM() {
-    P1DIR |= SERVO_PIN;
+    P1DIR |= SERVO_PIN;  // Set P1.4 as 
     P1SEL |= SERVO_PIN;  // Enable PWM on P1.4
 
     TA0CCR0 = 20000 - 1;     // 20ms period @ 1MHz (50Hz)

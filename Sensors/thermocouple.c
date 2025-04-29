@@ -1,4 +1,5 @@
 #include <msp430.h>
+#include "msp430fr2355.h"
 
 #define THERMOCOUPLE_PIN BIT0  // P1.0 = A0
 #define ADC_CHANNEL       0    // Channel A0
@@ -27,8 +28,6 @@ int readThermocoupleTemp() {
 }
 
 void setup() {
-    WDTCTL = WDTPW | WDTHOLD;  // Stop watchdog timer
-
     BCSCTL1 = CALBC1_1MHZ;     // Set clock to 1 MHz
     DCOCTL = CALDCO_1MHZ;
 
