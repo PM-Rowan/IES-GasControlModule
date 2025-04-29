@@ -1,13 +1,10 @@
 #include "msp430fr2355.h"
 #include <msp430.h>
-#include <type_traits>
 
 void RGB_init()
 {
     P6DIR |= BIT0 | BIT1 | BIT2;                     // P6.0, P6.1, and P6.2 output
     P6SEL0 |= BIT0 | BIT1 | BIT2;                    // P6.0, P6.1, and P6.2 options select
-
-    PM5CTL0 &= ~LOCKLPM5;
 
     TB3CCR0 = 1000 - 1;                         // PWM Period
 

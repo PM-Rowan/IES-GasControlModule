@@ -1,0 +1,4 @@
+"./RGB_LED.obj"
+"./test.obj"
+-lfrwp_init.a
+-llibc.a
