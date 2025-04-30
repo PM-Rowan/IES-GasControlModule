@@ -1,6 +1,7 @@
 #include <msp430.h>
+#include "msp430fr2355.h"
 
-#define SOLENOID_PIN   BIT0      // P4.0: controls solenoid (adjust as needed)
+#define SOLENOID_PIN   BIT0      // P2.0: controls solenoid (adjust as needed)
 #define BUTTON_PIN     BIT1      // P4.1: manual override button
 #define DEBOUNCE_TIME  20000
 

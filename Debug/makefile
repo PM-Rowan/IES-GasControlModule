@@ -10,8 +10,13 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./HeatAdjustment.obj" \
 "./RGB_LED.obj" \
+"./mainGasValve.obj" \
+"./pilotGasValve.obj" \
+"./potentiometer.obj" \
 "./test.obj" \
+"./thermocouple.obj" \
 $(GEN_CMDS__FLAG) \
 -lfrwp_init.a \
 -llibc.a \
@@ -142,8 +147,8 @@ msp430fr2355_gc_simple_json.out: $(OBJS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "RGB_LED.obj" "test.obj" 
-	-$(RM) "RGB_LED.d" "test.d" 
+	-$(RM) "HeatAdjustment.obj" "RGB_LED.obj" "mainGasValve.obj" "pilotGasValve.obj" "potentiometer.obj" "test.obj" "thermocouple.obj" 
+	-$(RM) "HeatAdjustment.d" "RGB_LED.d" "mainGasValve.d" "pilotGasValve.d" "potentiometer.d" "test.d" "thermocouple.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

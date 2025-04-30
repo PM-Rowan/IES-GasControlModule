@@ -1,4 +1,9 @@
+"./HeatAdjustment.obj"
 "./RGB_LED.obj"
+"./mainGasValve.obj"
+"./pilotGasValve.obj"
+"./potentiometer.obj"
 "./test.obj"
+"./thermocouple.obj"
 -lfrwp_init.a
 -llibc.a

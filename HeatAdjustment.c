@@ -1,4 +1,5 @@
 #include <msp430.h>
+#include "msp430fr2355.h"
 
 #define SERVO_PIN BIT0       // P5.0
 #define THERMISTOR_PIN BIT0  // P1.0 (A0)

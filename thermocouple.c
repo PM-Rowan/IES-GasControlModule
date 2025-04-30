@@ -1,55 +1,56 @@
+#include "msp430fr2355.h"
 #include <msp430.h>
 
-#define THERMOCOUPLE_PIN BIT0  // P1.0 = A0
-#define ADC_CHANNEL       0    // Channel A0
+#define THERMOCOUPLE_PIN BIT3
+#define DESIRED_TEMP 75  // Example: Desired temperature threshold in °C
 
-// Manually set desired temperature in Celsius
-int desiredTemp = 200; // Example threshold
+void initThermocoupleADC() {
+    // Stop watchdog timer
+    WDTCTL = WDTPW | WDTHOLD;
 
-// Read temperature from thermocouple (assuming 10 mV/°C output after amplification)
+    // Configure output pin for over-temp indication
+    P1DIR |= BIT3;  // Set P1.6 as output
+    P1OUT &= ~BIT3; // Initially off
+
+    // Configure ADC (Thermocouple input)
+    ADCCTL0 = ADCSHT_2 | ADCON;       // ADC ON, sampling time
+    ADCCTL1 = ADCSHP;                 // ADC sample-and-hold pulse mode
+    ADCCTL2 = ADCRES;                 // 10-bit resolution
+    ADCMCTL0 = ADCINCH_3;             // Input channel A3 (THERMOCOUPLE_PIN)
+    ADCCTL0 |= ADCENC;                // Enable ADC
+}
+
 int readThermocoupleTemp() {
-    ADC10CTL0 = ADC10SHT_3 + ADC10ON;
-    ADC10CTL1 = ADC_CHANNEL;
-    ADC10AE0 |= THERMOCOUPLE_PIN;
+    unsigned int adcValue;
+    float voltage;
+    float temperature;
 
-    ADC10CTL0 |= ENC + ADC10SC;            // Start ADC
-    while (ADC10CTL1 & ADC10BUSY);         // Wait for conversion
+    ADCCTL0 |= ADCSC;                 // Start conversion
+    while (ADCCTL1 & ADCBUSY);        // Wait for conversion to complete
+    adcValue = ADCMEM0;               // Read ADC value
 
-    unsigned int adcValue = ADC10MEM;
+    voltage = (float)adcValue * 3.3 / 1023;  // Convert ADC value to voltage (3.3V ref)
+    temperature = (voltage - 1.25) / 0.005;  // Example for Type K thermocouple
 
-    // Convert ADC value to voltage
-    float voltage = adcValue * (3.3 / 1024.0);  // Assuming 3.3V Vref
-
-    // Amplified thermocouple: 10 mV/°C → Temp = voltage (in V) / 0.01
-    int temperature = (int)(voltage / 0.01);
-
-    return temperature;
+    return (int)temperature;
 }
 
-void setup() {
-    WDTCTL = WDTPW | WDTHOLD;  // Stop watchdog timer
-
-    BCSCTL1 = CALBC1_1MHZ;     // Set clock to 1 MHz
-    DCOCTL = CALDCO_1MHZ;
-
-    // Optional: configure output pin to indicate over-temp
-    P1DIR |= BIT6;  // Set P1.6 as output
-    P1OUT &= ~BIT6; // Initially off
+bool isFlameDetected(int temperature, int flameThreshold) {
+    return temperature >= flameThreshold;
 }
 
-void main(void) {
-    setup();
+void runFlameDetection() {
+    initThermocoupleADC();
 
     while (1) {
         int temp = readThermocoupleTemp();
 
-        if (temp >= desiredTemp) {
-            P1OUT |= BIT6;  // Turn on alert (e.g., LED or signal)
+        if (isFlameDetected(temp, DESIRED_TEMP)) {
+            P1OUT |= BIT3;  // Turn on alert (e.g., LED or signal)
         } else {
-            P1OUT &= ~BIT6;
+            P1OUT &= ~BIT3; // Turn off alert
         }
 
         __delay_cycles(500000); // Wait between checks
     }
 }
-

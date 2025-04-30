@@ -1,4 +1,5 @@
 #include <msp430.h>
+#include "msp430fr2355.h"
 
 #define SERVO_PIN     BIT4      // P1.4 (Timer_A output)
 #define BUTTON_PIN    BIT3      // P2.3
