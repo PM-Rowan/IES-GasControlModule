@@ -9,27 +9,57 @@ CMD_SRCS += \
 ../lnk_msp430fr2355.cmd 
 
 C_SRCS += \
+../HeatAdjustment.c \
 ../RGB_LED.c \
-../test.c 
+../mainGasValve.c \
+../pilotGasValve.c \
+../potentiometer.c \
+../test.c \
+../thermocouple.c 
 
 C_DEPS += \
+./HeatAdjustment.d \
 ./RGB_LED.d \
-./test.d 
+./mainGasValve.d \
+./pilotGasValve.d \
+./potentiometer.d \
+./test.d \
+./thermocouple.d 
 
 OBJS += \
+./HeatAdjustment.obj \
 ./RGB_LED.obj \
-./test.obj 
+./mainGasValve.obj \
+./pilotGasValve.obj \
+./potentiometer.obj \
+./test.obj \
+./thermocouple.obj 
 
 OBJS__QUOTED += \
+"HeatAdjustment.obj" \
 "RGB_LED.obj" \
-"test.obj" 
+"mainGasValve.obj" \
+"pilotGasValve.obj" \
+"potentiometer.obj" \
+"test.obj" \
+"thermocouple.obj" 
 
 C_DEPS__QUOTED += \
+"HeatAdjustment.d" \
 "RGB_LED.d" \
-"test.d" 
+"mainGasValve.d" \
+"pilotGasValve.d" \
+"potentiometer.d" \
+"test.d" \
+"thermocouple.d" 
 
 C_SRCS__QUOTED += \
+"../HeatAdjustment.c" \
 "../RGB_LED.c" \
-"../test.c" 
+"../mainGasValve.c" \
+"../pilotGasValve.c" \
+"../potentiometer.c" \
+"../test.c" \
+"../thermocouple.c" 
 
 

@@ -1,4 +1,5 @@
-Potentiometer: 
+
+#include "msp430fr2355.h"
 #include <msp430.h>
 
 #define POT_PIN    BIT0     // P1.0 (A0)

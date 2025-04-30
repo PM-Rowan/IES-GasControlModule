@@ -1,5 +1,10 @@
+"./HeatAdjustment.obj"
 "./RGB_LED.obj"
+"./mainGasValve.obj"
+"./pilotGasValve.obj"
+"./potentiometer.obj"
 "./test.obj"
+<<<<<<< HEAD
 "./Failsafe-Systems/flameRetry.obj"
 "./Sensors/potentiometer.obj"
 "./Sensors/thermistor.obj"
@@ -7,5 +12,8 @@
 "./Valves/mainGasValve.obj"
 "./Valves/pilotGasValve.obj"
 "../lnk_msp430fr2355.cmd"
+=======
+"./thermocouple.obj"
+>>>>>>> 6d484376e65a0dc863bfedab8e17a3bcc0002405
 -lfrwp_init.a
 -llibc.a
