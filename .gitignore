@@ -1,3 +1,7 @@
+# Compile Files
+Debug/
+targetConfigs/
+
 # Prerequisites
 *.d
 
