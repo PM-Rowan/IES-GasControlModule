@@ -1,53 +1,42 @@
-
 #include "msp430fr2355.h"
 #include <msp430.h>
 
-#define POT_PIN    BIT0     // P1.0 (A0)
+#define POT_PIN    BIT5     // P1.5 (A5)
 #define LED_PIN    BIT6     // P1.6 (for output indicator like an LED)
-#define ADC_CHANNEL 0       // A0
-
-// Set desired temperature manually (0–100 for example)
-int desiredTemp = 50;
-
-// Convert potentiometer ADC value (0–1023) to 0–100 scale
-int readPotAsTemperature() {
-    ADC10CTL0 = ADC10SHT_3 + ADC10ON;      // Sample and hold time, ADC on
-    ADC10CTL1 = ADC_CHANNEL;               // Input from A0
-    ADC10AE0 |= POT_PIN;                   // Enable analog input on P1.0
-
-    ADC10CTL0 |= ENC + ADC10SC;            // Start conversion
-    while (ADC10CTL1 & ADC10BUSY);         // Wait for it to finish
-
-    unsigned int adcVal = ADC10MEM;
-
-    // Scale 0–1023 to 0–100 as a simulated temperature
-    int temperature = (adcVal * 100) / 1023;
-
-    return temperature;
-}
+#define ADC_CHANNEL 0       // ADC channel for A0
 
 void setup() {
-    WDTCTL = WDTPW | WDTHOLD;   // Stop watchdog timer
+    WDTCTL = WDTPW | WDTHOLD;   // Stop the watchdog timer
 
-    BCSCTL1 = CALBC1_1MHZ;      // Clock settings
-    DCOCTL = CALDCO_1MHZ;
-
-    P1DIR |= LED_PIN;           // Set P1.6 as output (e.g. LED)
+    // Configure LED pin as output
+    P1DIR |= LED_PIN;
     P1OUT &= ~LED_PIN;          // Start with LED off
+
+    // Configure P1.5 (A5) for ADC input
+    P1SEL0 |= POT_PIN;         
+    P1SEL1 |= POT_PIN;
+
+    // Configure ADC settings
+    ADCCTL0 = ADCSHT_2 | ADCON;    // Sample & hold time, ADC on
+    ADCCTL1 = ADCSHP;              // Sampling signal from sample timer
+    ADCCTL2 = ADCRES;              // Use 12-bit resolution
+    ADCMCTL0 = ADC_CHANNEL;        // Select A0 as input channel
 }
 
-void main(void) {
-    setup();
+unsigned int readADC() {
+    ADCCTL0 |= ADCENC | ADCSC;     // Enable ADC and start conversion
+    while (ADCCTL1 & ADCBUSY);     // Wait for conversion to finish
+    
+    return ADCMEM0;                // Read ADC result
+}
 
-    while (1) {
-        int currentTemp = readPotAsTemperature();
-
-        if (currentTemp >= desiredTemp) {
-            P1OUT |= LED_PIN;   // Turn on LED if temp is high
-        } else {
-            P1OUT &= ~LED_PIN;  // Turn off LED if below threshold
-        }
-
-        __delay_cycles(500000); // Delay for readability
+void loop() {
+    unsigned int adcVal = readADC();  
+    int temperature = (adcVal * 100) / 4095; // Scale ADC value to 0–100 range
+    
+    if (temperature > 50) {
+        P1OUT |= LED_PIN;  // Turn on LED if temperature is above threshold
+    } else {
+        P1OUT &= ~LED_PIN; // Turn off LED otherwise
     }
 }
