@@ -6,7 +6,6 @@
 #define ADC_CHANNEL 0       // ADC channel for A0
 
 void setup() {
-    WDTCTL = WDTPW | WDTHOLD;   // Stop the watchdog timer
 
     // Configure LED pin as output
     P1DIR |= LED_PIN;
