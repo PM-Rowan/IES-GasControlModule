@@ -7,7 +7,7 @@
 
 void initThermocoupleADC() {
     // Stop watchdog timer
-    WDTCTL = WDTPW | WDTHOLD;
+
 
     // Configure output pin for over-temp indication
     P1DIR |= BIT3;  // Set P1.6 as output
@@ -36,7 +36,6 @@ int readThermocoupleTemp() {
     return (int)temperature;
 }
 
-<<<<<<< HEAD:Sensors/thermocouple.c
 void setup() {
     BCSCTL1 = CALBC1_1MHZ;     // Set clock to 1 MHz
     DCOCTL = CALDCO_1MHZ;
@@ -44,16 +43,14 @@ void setup() {
     // Optional: configure output pin to indicate over-temp
     P1DIR |= BIT6;  // Set P1.6 as output
     P1OUT &= ~BIT6; // Initially off
-=======
+}
 bool isFlameDetected(int temperature, int flameThreshold) {
     return temperature >= flameThreshold;
->>>>>>> 6d484376e65a0dc863bfedab8e17a3bcc0002405:thermocouple.c
 }
 
 void runFlameDetection() {
     initThermocoupleADC();
 
-    while (1) {
         int temp = readThermocoupleTemp();
 
         if (isFlameDetected(temp, DESIRED_TEMP)) {
@@ -63,5 +60,5 @@ void runFlameDetection() {
         }
 
         __delay_cycles(500000); // Wait between checks
-    }
+    
 }

@@ -42,12 +42,14 @@ unsigned int readADC(char sensorSelect)
     // A5 -> Potentiometer: sensorSelect = 5
     // Else -> Nothing:     sensorSelect = x
 
+
+    ADCR
     // Only bits 1 & 0
     ADCMCTL0 &= sensorSelect;
 
     while( (ADCIV0 & ADCIFG0) == 0);
 
-    return // @ ADC Register
+    return// @ ADC Register
 }
 
 void quickRead() // Read all possible ADC Inputs, A0 -> A15
