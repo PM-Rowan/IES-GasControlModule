@@ -31,25 +31,28 @@ void adc_Init()
     ADCCTL2 &= ~ADCDF; // unsigned format
 
     // Reset ADC Mux to A0 (0000)
-    ADCMCTL0 &= ~ADCINCH0 | ~ADCINCH1 | ~ADCINCH2 | ~ADCINCH3; 
+    ADCMCTL0 &= ~ADCINCH_15; 
 }
 
 // Reads input pin and outputs 12bit value (15-12 are 0)
 unsigned int readADC(char sensorSelect) 
 {
+    
     // A3 -> Thermocouple:  sensorSelect = 3
     // A4 -> Thermistor:    sensorSelect = 4
     // A5 -> Potentiometer: sensorSelect = 5
     // Else -> Nothing:     sensorSelect = x
 
 
-    ADCR
+    
     // Only bits 1 & 0
-    ADCMCTL0 &= sensorSelect;
+    ADCMCTL0 &= ~(ADCINCH_15);
+    ADCMCTL0 |= sensorSelect;
+    ADCCTL0 |= ADCENC | ADCSC;
 
     while( (ADCIV0 & ADCIFG0) == 0);
 
-    return// @ ADC Register
+    return ADCMEM0;// @ ADC Register
 }
 
 void quickRead() // Read all possible ADC Inputs, A0 -> A15
