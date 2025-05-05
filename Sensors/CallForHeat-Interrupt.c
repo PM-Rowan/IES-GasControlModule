@@ -1,6 +1,10 @@
-#include "intrinsics.h"
 #include "msp430fr2355.h"
 #include <msp430.h>
+
+// Custom Libraries
+#include "Headers/Inputs/Sensors.h"
+
+#include "Headers/Internal/ignitionLoop.h"
 
 void CallForHeat();
 
@@ -25,12 +29,11 @@ __interrupt void ISR_Port3(void)
 
 void CallForHeat()
 {
-    if (P3IN & BIT0) {
-        // System Steps Here
-    }
-    else {
-        // IDLE STATE
+    ignitionLoop();
+
+    while (P3IN & BIT0) {
+        startHeatingLoop(); // adjusts main gas valve according to temp
     }
     
-    P3IFG &= ~BIT0; // Turn off flag
+    P3IFG &= ~BIT0; // Go back to IDLE
 }

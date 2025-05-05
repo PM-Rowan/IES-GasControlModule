@@ -40,19 +40,3 @@ void adjustHeatByTemp() {
     int angle = mapTempToAngle(tempADC);
     setServoAngle(angle);
 }
-
-// Main program loop
-void main(void) {
-    WDTCTL = WDTPW | WDTHOLD;    // Stop watchdog timer
-
-    // Configure ADC input
-    ADC10AE0 |= THERMISTOR_PIN;  // Enable analog on P1.0
-
-    setupPWM();                  // Setup servo PWM
-
-    while (1) {
-        adjustHeatByTemp();     // Continuously adjust heat
-        __delay_cycles(100000); // Delay for stability (~100ms @ 1MHz)
-    }
-}
-

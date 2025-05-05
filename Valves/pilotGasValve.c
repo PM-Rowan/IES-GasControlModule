@@ -16,6 +16,14 @@ __interrupt void Port_4(void) {
     P4IFG &= ~BUTTON_PIN; // Clear interrupt flag
 }
 
+void pilotGasValve_open() {
+    P2OUT &= ~SOLENOID_PIN; // Set P2.1 to on
+}
+
+void pilotGasValve_close() {
+    P2OUT |= SOLENOID_PIN; // Set P2.1 to off
+}
+
 void pilotGasValve_init() {
 
     // Solenoid Config

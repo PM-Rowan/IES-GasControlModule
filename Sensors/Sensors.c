@@ -10,6 +10,7 @@ This will apply for:
 #include <thread>
 
 #include "GLOBAL.h"
+extern volatile int ADC_AX[16] = {};
 
 void adc_Init() 
 {
@@ -38,10 +39,10 @@ void adc_Init()
 unsigned int readADC(char sensorSelect) 
 {
     
-    // A3 -> Thermocouple:  sensorSelect = 3
-    // A4 -> Thermistor:    sensorSelect = 4
-    // A5 -> Potentiometer: sensorSelect = 5
-    // Else -> Nothing:     sensorSelect = x
+    // A3 -> Thermocouple:  [Pilot Light]           sensorSelect = 3
+    // A4 -> Thermistor:    [Main Valve Chamber]    sensorSelect = 4
+    // A5 -> Potentiometer:                         sensorSelect = 5
+    // Else -> Nothing:                             sensorSelect = x
 
 
     
@@ -52,14 +53,16 @@ unsigned int readADC(char sensorSelect)
 
     while( (ADCIV0 & ADCIFG0) == 0);
 
-    return ADCMEM0;// @ ADC Register
+    return ADCMEM0; // ADC Register
 }
 
 void quickRead() // Read all possible ADC Inputs, A0 -> A15
 {
-    while(int x = 0; i < 16; i = i + 1) 
+    ADC_AX = {};
+
+    while(char i = 0; i < 16; i += 1) 
     {
-        ADCMCTL0 &= sensorSelect + 3;
+        ADCMCTL0 &= i;
 
         while( (ADCIV0 & ADCIFG0) == 0);
 

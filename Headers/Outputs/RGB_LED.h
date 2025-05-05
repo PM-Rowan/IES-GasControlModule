@@ -4,8 +4,10 @@
 void RGB_init();
 void RGB_PWM(char, char, char);
 
+// Light Value // range: [0,255]
 const unsigned char rgbLevel = 127;
 
+// Preset Functions
 #define TOOHOT RGB_PWM(rgbLevel, 0, 0);
 #define INTEMP RGB_PWM(0, rgbLevel, 0);
 #define TOOCOLD RGB_PWM(0, 0, rgbLevel);
