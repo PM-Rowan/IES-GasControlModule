@@ -1,0 +1,67 @@
+[
+   {
+      "directory" : "E:/Ti/Projects/IES-GasControlModule/Debug",
+      "command"   : "clang++ -I\"E:/Ti/ccs/ccs_base/msp430/include\" -I\"E:/Ti/Projects/IES-GasControlModule\" -I\"E:/Ti/Projects/IES-GasControlModule/include\" -I\"E:/Ti/ccs/tools/compiler/ti-cgt-msp430_21.6.1.LTS/include\" -D__MSP430FR2355__ -D_FRWP_ENABLE -D_INFO_FRWP_ENABLE -D__ENABLE_GUI_COMM=1 -DGLOBAL_Q=8 -xc",
+      "file"      : "E:/Ti/Projects/IES-GasControlModule/main.c"
+   },
+   {
+      "directory" : "E:/Ti/Projects/IES-GasControlModule/Debug",
+      "command"   : "clang++ -I\"E:/Ti/ccs/ccs_base/msp430/include\" -I\"E:/Ti/Projects/IES-GasControlModule\" -I\"E:/Ti/Projects/IES-GasControlModule/include\" -I\"E:/Ti/ccs/tools/compiler/ti-cgt-msp430_21.6.1.LTS/include\" -D__MSP430FR2355__ -D_FRWP_ENABLE -D_INFO_FRWP_ENABLE -D__ENABLE_GUI_COMM=1 -DGLOBAL_Q=8 -xc",
+      "file"      : "E:/Ti/Projects/IES-GasControlModule/Sensors/CallForHeat-Interrupt.c"
+   },
+   {
+      "directory" : "E:/Ti/Projects/IES-GasControlModule/Debug",
+      "command"   : "clang++ -I\"E:/Ti/ccs/ccs_base/msp430/include\" -I\"E:/Ti/Projects/IES-GasControlModule\" -I\"E:/Ti/Projects/IES-GasControlModule/include\" -I\"E:/Ti/ccs/tools/compiler/ti-cgt-msp430_21.6.1.LTS/include\" -D__MSP430FR2355__ -D_FRWP_ENABLE -D_INFO_FRWP_ENABLE -D__ENABLE_GUI_COMM=1 -DGLOBAL_Q=8 -xc",
+      "file"      : "E:/Ti/Projects/IES-GasControlModule/Sensors/Sensors.c"
+   },
+   {
+      "directory" : "E:/Ti/Projects/IES-GasControlModule/Debug",
+      "command"   : "clang++ -I\"E:/Ti/ccs/ccs_base/msp430/include\" -I\"E:/Ti/Projects/IES-GasControlModule\" -I\"E:/Ti/Projects/IES-GasControlModule/include\" -I\"E:/Ti/ccs/tools/compiler/ti-cgt-msp430_21.6.1.LTS/include\" -D__MSP430FR2355__ -D_FRWP_ENABLE -D_INFO_FRWP_ENABLE -D__ENABLE_GUI_COMM=1 -DGLOBAL_Q=8 -xc",
+      "file"      : "E:/Ti/Projects/IES-GasControlModule/Sensors/potentiometer.c"
+   },
+   {
+      "directory" : "E:/Ti/Projects/IES-GasControlModule/Debug",
+      "command"   : "clang++ -I\"E:/Ti/ccs/ccs_base/msp430/include\" -I\"E:/Ti/Projects/IES-GasControlModule\" -I\"E:/Ti/Projects/IES-GasControlModule/include\" -I\"E:/Ti/ccs/tools/compiler/ti-cgt-msp430_21.6.1.LTS/include\" -D__MSP430FR2355__ -D_FRWP_ENABLE -D_INFO_FRWP_ENABLE -D__ENABLE_GUI_COMM=1 -DGLOBAL_Q=8 -xc",
+      "file"      : "E:/Ti/Projects/IES-GasControlModule/Sensors/thermistor.c"
+   },
+   {
+      "directory" : "E:/Ti/Projects/IES-GasControlModule/Debug",
+      "command"   : "clang++ -I\"E:/Ti/ccs/ccs_base/msp430/include\" -I\"E:/Ti/Projects/IES-GasControlModule\" -I\"E:/Ti/Projects/IES-GasControlModule/include\" -I\"E:/Ti/ccs/tools/compiler/ti-cgt-msp430_21.6.1.LTS/include\" -D__MSP430FR2355__ -D_FRWP_ENABLE -D_INFO_FRWP_ENABLE -D__ENABLE_GUI_COMM=1 -DGLOBAL_Q=8 -xc",
+      "file"      : "E:/Ti/Projects/IES-GasControlModule/Sensors/thermocouple.c"
+   },
+   {
+      "directory" : "E:/Ti/Projects/IES-GasControlModule/Debug",
+      "command"   : "clang++ -I\"E:/Ti/ccs/ccs_base/msp430/include\" -I\"E:/Ti/Projects/IES-GasControlModule\" -I\"E:/Ti/Projects/IES-GasControlModule/include\" -I\"E:/Ti/ccs/tools/compiler/ti-cgt-msp430_21.6.1.LTS/include\" -D__MSP430FR2355__ -D_FRWP_ENABLE -D_INFO_FRWP_ENABLE -D__ENABLE_GUI_COMM=1 -DGLOBAL_Q=8 -xc",
+      "file"      : "E:/Ti/Projects/IES-GasControlModule/SystemInternal/FRS.c"
+   },
+   {
+      "directory" : "E:/Ti/Projects/IES-GasControlModule/Debug",
+      "command"   : "clang++ -I\"E:/Ti/ccs/ccs_base/msp430/include\" -I\"E:/Ti/Projects/IES-GasControlModule\" -I\"E:/Ti/Projects/IES-GasControlModule/include\" -I\"E:/Ti/ccs/tools/compiler/ti-cgt-msp430_21.6.1.LTS/include\" -D__MSP430FR2355__ -D_FRWP_ENABLE -D_INFO_FRWP_ENABLE -D__ENABLE_GUI_COMM=1 -DGLOBAL_Q=8 -xc",
+      "file"      : "E:/Ti/Projects/IES-GasControlModule/SystemInternal/ignitionLoop.c"
+   },
+   {
+      "directory" : "E:/Ti/Projects/IES-GasControlModule/Debug",
+      "command"   : "clang++ -I\"E:/Ti/ccs/ccs_base/msp430/include\" -I\"E:/Ti/Projects/IES-GasControlModule\" -I\"E:/Ti/Projects/IES-GasControlModule/include\" -I\"E:/Ti/ccs/tools/compiler/ti-cgt-msp430_21.6.1.LTS/include\" -D__MSP430FR2355__ -D_FRWP_ENABLE -D_INFO_FRWP_ENABLE -D__ENABLE_GUI_COMM=1 -DGLOBAL_Q=8 -xc",
+      "file"      : "E:/Ti/Projects/IES-GasControlModule/SystemInternal/pilotLightTimer.c"
+   },
+   {
+      "directory" : "E:/Ti/Projects/IES-GasControlModule/Debug",
+      "command"   : "clang++ -I\"E:/Ti/ccs/ccs_base/msp430/include\" -I\"E:/Ti/Projects/IES-GasControlModule\" -I\"E:/Ti/Projects/IES-GasControlModule/include\" -I\"E:/Ti/ccs/tools/compiler/ti-cgt-msp430_21.6.1.LTS/include\" -D__MSP430FR2355__ -D_FRWP_ENABLE -D_INFO_FRWP_ENABLE -D__ENABLE_GUI_COMM=1 -DGLOBAL_Q=8 -xc",
+      "file"      : "E:/Ti/Projects/IES-GasControlModule/SystemOutputs/RGB_LED.c"
+   },
+   {
+      "directory" : "E:/Ti/Projects/IES-GasControlModule/Debug",
+      "command"   : "clang++ -I\"E:/Ti/ccs/ccs_base/msp430/include\" -I\"E:/Ti/Projects/IES-GasControlModule\" -I\"E:/Ti/Projects/IES-GasControlModule/include\" -I\"E:/Ti/ccs/tools/compiler/ti-cgt-msp430_21.6.1.LTS/include\" -D__MSP430FR2355__ -D_FRWP_ENABLE -D_INFO_FRWP_ENABLE -D__ENABLE_GUI_COMM=1 -DGLOBAL_Q=8 -xc",
+      "file"      : "E:/Ti/Projects/IES-GasControlModule/SystemOutputs/ignitor.c"
+   },
+   {
+      "directory" : "E:/Ti/Projects/IES-GasControlModule/Debug",
+      "command"   : "clang++ -I\"E:/Ti/ccs/ccs_base/msp430/include\" -I\"E:/Ti/Projects/IES-GasControlModule\" -I\"E:/Ti/Projects/IES-GasControlModule/include\" -I\"E:/Ti/ccs/tools/compiler/ti-cgt-msp430_21.6.1.LTS/include\" -D__MSP430FR2355__ -D_FRWP_ENABLE -D_INFO_FRWP_ENABLE -D__ENABLE_GUI_COMM=1 -DGLOBAL_Q=8 -xc",
+      "file"      : "E:/Ti/Projects/IES-GasControlModule/Valves/mainGasValve.c"
+   },
+   {
+      "directory" : "E:/Ti/Projects/IES-GasControlModule/Debug",
+      "command"   : "clang++ -I\"E:/Ti/ccs/ccs_base/msp430/include\" -I\"E:/Ti/Projects/IES-GasControlModule\" -I\"E:/Ti/Projects/IES-GasControlModule/include\" -I\"E:/Ti/ccs/tools/compiler/ti-cgt-msp430_21.6.1.LTS/include\" -D__MSP430FR2355__ -D_FRWP_ENABLE -D_INFO_FRWP_ENABLE -D__ENABLE_GUI_COMM=1 -DGLOBAL_Q=8 -xc",
+      "file"      : "E:/Ti/Projects/IES-GasControlModule/Valves/pilotGasValve.c"
+   }
+]
