@@ -54,7 +54,6 @@ void main(void) {
         __no_operation();         // Low-power wait loop
     }
 }
-
 // Flame Retry System
 #define MAIN_VALVE_CLOSE_ANGLE   0
 #define MAIN_VALVE_OPEN_ANGLE    90
