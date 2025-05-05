@@ -6,29 +6,27 @@ void CallForHeat();
 
 int CallForHeat_init(void)
 {
-    P4DIR &= ~BIT1; // P4.1 button is input
-    P4REN |= BIT1; // Enable Resistor
-    P4OUT |= BIT1; // Pull-up
-    P4IES |= BIT1; // H to L
+    P3DIR &= ~BIT1; // P3.0 as Input
+    P3REN |= BIT0; // Enable Resistor
+    P3OUT |= BIT0; // Pull-up
+    P3IES |= BIT0; // H to L
 
-    PM5CTL0 &= ~LOCKLPM5; // turns on digital IO
-
-    P4IE |= BIT1; // enables IRQ 
+    P3IE |= BIT0; // enables IRQ 
     __enable_interrupt(); 
-    P4IFG &= ~BIT1; 
+    P3IFG &= ~BIT0; 
 }
 
-// Interrupt when Logical "HIGH" (1) is detected
+// Interrupt when rising edge is detected
 
-#pragma vector = PORT4_VECTOR
-__interrupt void ISR_Port4_S1(void)
+#pragma vector = PORT3_VECTOR
+__interrupt void ISR_Port3(void)
 {
     CallForHeat();
 }
 
 void CallForHeat()
 {
-    if (P4IN & BIT1) {
+    if (P3IN & BIT0) {
         // System Steps Here
     }
     else {
