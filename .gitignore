@@ -1,8 +1,8 @@
 # Compile Files
-Debug/
-targetConfigs/
-.idx
-.json
+#Debug/
+#targetConfigs/
+#.idx
+#.json
 
 # Prerequisites
 *.d
