@@ -10,9 +10,23 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./HeatAdjustment.obj" \
 "./RGB_LED.obj" \
+"./mainGasValve.obj" \
+"./pilotGasValve.obj" \
+"./potentiometer.obj" \
 "./test.obj" \
+<<<<<<< HEAD
+"./Failsafe-Systems/flameRetry.obj" \
+"./Sensors/potentiometer.obj" \
+"./Sensors/thermistor.obj" \
+"./Sensors/thermocouple.obj" \
+"./Valves/mainGasValve.obj" \
+"./Valves/pilotGasValve.obj" \
 "../lnk_msp430fr2355.cmd" \
+=======
+"./thermocouple.obj" \
+>>>>>>> 6d484376e65a0dc863bfedab8e17a3bcc0002405
 $(GEN_CMDS__FLAG) \
 -lfrwp_init.a \
 -llibc.a \
@@ -25,7 +39,13 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include Failsafe-Systems/subdir_vars.mk
+-include Sensors/subdir_vars.mk
+-include Valves/subdir_vars.mk
 -include subdir_rules.mk
+-include Failsafe-Systems/subdir_rules.mk
+-include Sensors/subdir_rules.mk
+-include Valves/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -143,8 +163,13 @@ msp430fr2355_gc_simple_json.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "RGB_LED.obj" "test.obj" 
-	-$(RM) "RGB_LED.d" "test.d" 
+<<<<<<< HEAD
+	-$(RM) "RGB_LED.obj" "test.obj" "Failsafe-Systems\flameRetry.obj" "Sensors\potentiometer.obj" "Sensors\thermistor.obj" "Sensors\thermocouple.obj" "Valves\mainGasValve.obj" "Valves\pilotGasValve.obj" 
+	-$(RM) "RGB_LED.d" "test.d" "Failsafe-Systems\flameRetry.d" "Sensors\potentiometer.d" "Sensors\thermistor.d" "Sensors\thermocouple.d" "Valves\mainGasValve.d" "Valves\pilotGasValve.d" 
+=======
+	-$(RM) "HeatAdjustment.obj" "RGB_LED.obj" "mainGasValve.obj" "pilotGasValve.obj" "potentiometer.obj" "test.obj" "thermocouple.obj" 
+	-$(RM) "HeatAdjustment.d" "RGB_LED.d" "mainGasValve.d" "pilotGasValve.d" "potentiometer.d" "test.d" "thermocouple.d" 
+>>>>>>> 6d484376e65a0dc863bfedab8e17a3bcc0002405
 	-@echo 'Finished clean'
 	-@echo ' '
 
