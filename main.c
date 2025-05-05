@@ -11,6 +11,7 @@
 #include "Headers/Inputs/CallForHeat-Interrupt.h"
 #include "Headers/Inputs/potentiometer.h"
 #include "Headers/Inputs/Sensors.h"
+#include "Headers/Inputs/thermoistor.h"
 #include "Headers/Inputs/thermocouple.h"
 
 // // Internal
@@ -30,11 +31,11 @@ void systemSetup();
 // The Meat and Potatoes
 void main(void)
 {
-    systemSetup();
+    OFF; // Set RGB LED to OFF
 
-    while(1) {
-        // Let the 'magic' happen
-    }
+    systemSetup(); // Run all initializations for inputs, outputs, and any internal systems
+
+    // I am 90% sure nothing needs to go here since everything uses interrupts
 }
 
 // Main Sub-Functions
@@ -48,8 +49,8 @@ void systemSetup()
         CallForHeat_init();
         potentiometer_init();
         adc_Init();
+        thermistor_init();
         thermocouple_init();
-        // thermistor_init();
 
     // // Internal INITS
         pilotLightTimer_init();

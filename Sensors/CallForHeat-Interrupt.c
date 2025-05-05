@@ -5,6 +5,7 @@
 #include "Headers/Inputs/Sensors.h"
 
 #include "Headers/Internal/ignitionLoop.h"
+#include "Headers/Outputs/RGB_LED.h"
 
 void CallForHeat();
 
@@ -29,11 +30,15 @@ __interrupt void ISR_Port3(void)
 
 void CallForHeat()
 {
+    WH; // Set RGB LED to White when CallForHeat is running
+
     ignitionLoop();
 
     while (P3IN & BIT0) {
         startHeatingLoop(); // adjusts main gas valve according to temp
     }
+
+    GB; // Set RGB LED to Cyan/Teal for IDLE
     
     P3IFG &= ~BIT0; // Go back to IDLE
 }

@@ -16,7 +16,7 @@ void FRS_pilotLightFail()
 
 void FRS_flameLost()
 {
-    mainGasValve_close();
+    setServoAngle(0); // Close Main Gas Valve
 
     FRS_pilotLightFail(); // closes PL valve and begins disabled period
 }

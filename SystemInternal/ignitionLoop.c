@@ -5,7 +5,6 @@
 #include "GLOBAL.h"
 
 #include "Headers/Inputs/Sensors.h"
-#include "Headers/Inputs/thermocouple.h"
 
 #include "Headers/Internal/FRS.h"
 
@@ -24,6 +23,8 @@ unsigned int thermistorADC = 0;
 unsigned char timesTried = 0;
 
 void ignitionLoop() {
+
+    setServoAngle(90); // Set the Main Gas Valve to be fully open
 
     // runs on the assumption heat is still needed even if there is a fail
     do {
