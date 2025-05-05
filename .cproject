@@ -91,7 +91,10 @@
                         </toolChain>
                     </folderInfo>
                     <sourceEntries>
+<<<<<<< HEAD
                         <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+=======
+>>>>>>> c22371bf48115dabcca6f16fe281b6e71bd2e212
                     </sourceEntries>
                 </configuration>
             </storageModule>
